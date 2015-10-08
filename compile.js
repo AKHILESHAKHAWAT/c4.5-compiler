@@ -8,9 +8,7 @@ function compile(model) {
   invariant(!model.hasOwnProperty('model'), 'You should pass model.model');
 
   var sandbox = {};
-  vm.createContext(sandbox);
-
-  vm.runInContext(getSource(model), sandbox);
+  vm.runInNewContext(getSource(model), sandbox);
 
   return sandbox.classify;
 }
